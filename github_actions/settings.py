@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from os import getenv, environ as env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,32 @@ SECRET_KEY = 'django-insecure-^a*koqttmizbes_e7i18@t1%4i_b^=181hv^t$hbpno75t*0=0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['104.237.129.63']
+
+# if sys.argv[1] ==
+if getenv('GITHUB_WORKFLOW'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'github-actions',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
+            'HOST': 'localhost',
+            'PORT': '5432'
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'luis_carrillo_d',
+            'USER': 'luis_carrillo',
+            'PASSWORD': 'luis_carrillo123*',
+            'ALLOWED_HOSTS': ['104.237.129.63'], # 'HOST': '104.237.129.63' OR 'HOST':'localhost'
+            # 'HOST': 'localhost',
+            'PORT': '5432',  # 'PORT': 5432
+        }
+    }
 
 
 # Application definition
