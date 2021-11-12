@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-^a*koqttmizbes_e7i18@t1%4i_b^=181hv^t$hbpno75t*0=0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['104.237.129.63']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['104.237.129.63']
 
 # if sys.argv[1] ==
 if getenv('GITHUB_WORKFLOW'):
@@ -37,7 +38,7 @@ if getenv('GITHUB_WORKFLOW'):
             'USER': 'postgres',
             'PASSWORD': 'postgres',
             'HOST': 'localhost',
-            'PORT': '5432'
+            'PORT': 5432
         }
     }
 else:
